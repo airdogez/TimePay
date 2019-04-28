@@ -19,7 +19,7 @@
         "children": 1,
         "spouse": "n",
         "debt": 1400,
-        "weight": "overweight"
+        "weight": "fat"
     },
     "3": {
         "name": "Godot",

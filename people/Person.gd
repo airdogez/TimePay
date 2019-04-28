@@ -2,14 +2,6 @@ extends KinematicBody2D
 class_name Person
 
 const SPRITE_PATH = "res://people/"
-#var person_name
-#var education
-#var job_time
-#var job_salary
-#var children
-#var spouse
-#var age
-#var weight
 
 var data #Will have all people statically created in a json file for now
 
@@ -54,7 +46,6 @@ func _physics_process(delta):
 		set_physics_process(false)
 		$AnimationPlayer.play("idle")
 		emit_signal("reached_queue", self)
-
 
 func move_to(_position: Vector2):
 	$Tween.interpolate_property(self, "global_position", global_position, _position, 0.8, Tween.TRANS_LINEAR, Tween.EASE_OUT)

@@ -14,4 +14,7 @@ func load_data():
 	var text = parse_json(file.get_as_text())
 	assert text.size() > 0
 	data = text
-	print(data)
+	
+func get_random_value():
+	var size = data.size()
+	return data[randi()%size]

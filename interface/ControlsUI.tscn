@@ -173,6 +173,30 @@ text = "Give
 align = 1
 valign = 1
 
+[node name="PayButton" type="Button" parent="Panel/Control"]
+margin_left = -11.0
+margin_top = 39.0
+margin_right = 17.0
+margin_bottom = 57.0
+rect_clip_content = true
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+
+[node name="GiveLabel" type="Label" parent="Panel/Control/PayButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.0
+margin_top = -8.0
+margin_right = 13.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 2 )
+text = "Pay"
+align = 1
+valign = 1
+
 [node name="DenyButton" type="Button" parent="Panel/Control"]
 margin_left = 34.0
 margin_top = 20.0
@@ -201,4 +225,5 @@ valign = 1
 [connection signal="pressed" from="Panel/Control/UpButton" to="." method="_on_UpButton_pressed"]
 [connection signal="pressed" from="Panel/Control/DownButton" to="." method="_on_DownButton_pressed"]
 [connection signal="pressed" from="Panel/Control/GiveButton" to="." method="_on_GiveButton_pressed"]
+[connection signal="pressed" from="Panel/Control/PayButton" to="." method="_on_PayButton_pressed"]
 [connection signal="pressed" from="Panel/Control/DenyButton" to="." method="_on_DenyButton_pressed"]

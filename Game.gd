@@ -42,17 +42,13 @@ func entered(person: Person):
 	for b in $BubbleLoc.get_children():
 		b.queue_free()
 	current_person = person
-	print(person)
 	person_ui.set_person_data(person)
 
 func _process(delta):
 	if timer.is_stopped() and people_queue.size() < MAX_PEOPLE:
 		timer.wait_time = rand_range(3, 8)
 		timer.start()
-	elif people_queue.size() > 0:
-		var p = allow_entry_next_person()
-		yield(p, "finished_entering")
-		p.disable_collision(true)
+
 
 
 func add_to_queue(person: Person):
@@ -65,7 +61,7 @@ func spawn_person():
 	p.global_position = Vector2(0, CENTERY+yoffset)
 	$People.add_child(p)
 	var idx = randi() % people_data.size()
-	var data = people_data[idx]
+	var data = $PersonGenerator.generate()
 	p.set_data(data)
 	p.connect("reached_queue", self, "add_to_queue")
 
@@ -74,3 +70,11 @@ func _on_Timer_timeout():
 	if(people_queue.size() >= MAX_PEOPLE):
 		timer.stop()
 	timer.wait_time = rand_range(3, 8)
+
+
+func _on_ControlsUI_next():
+	var p = allow_entry_next_person()
+	yield(p, "finished_entering")
+	p.disable_collision(true)
+	for people in people_queue:
+		people.continue_moving_queue()

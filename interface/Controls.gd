@@ -15,6 +15,7 @@ signal give(amount)
 signal deny
 signal increase
 signal decrease
+signal next
 
 func _ready():
 	amount_screen.set_money(amount)
@@ -44,3 +45,7 @@ func _on_GiveButton_pressed():
 
 func _on_DenyButton_pressed():
 	emit_signal("deny")
+
+
+func _on_PayButton_pressed():
+	emit_signal("next")

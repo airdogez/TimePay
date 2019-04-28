@@ -76,19 +76,20 @@ margin_top = 14.0
 margin_right = 95.0
 margin_bottom = 14.0
 
-[node name="Generator" type="Node" parent="."]
+[node name="PersonGenerator" type="Node" parent="."]
 script = ExtResource( 7 )
 
-[node name="NameLoader" type="Node" parent="Generator"]
-script = ExtResource( 8 )
-data_file_path = "res://people/data/names.json"
-
-[node name="LastNameLoader" type="Node" parent="Generator"]
-script = ExtResource( 8 )
-data_file_path = "res://people/data/lastnames.json"
-
-[node name="JobLoader" type="Node" parent="Generator"]
+[node name="JobLoader" type="Node" parent="PersonGenerator"]
 script = ExtResource( 8 )
 data_file_path = "res://people/data/jobs.json"
 
+[node name="NameLoader" type="Node" parent="PersonGenerator"]
+script = ExtResource( 8 )
+data_file_path = "res://people/data/names.json"
+
+[node name="LastNameLoader" type="Node" parent="PersonGenerator"]
+script = ExtResource( 8 )
+data_file_path = "res://people/data/lastnames.json"
+
+[connection signal="next" from="UI/ControlsUI" to="." method="_on_ControlsUI_next"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

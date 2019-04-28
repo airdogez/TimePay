@@ -4,16 +4,18 @@ class_name PersonDisplay
 func set_person_data(person: Person):
 	$NinePatchRect/NameLabel.text = person.data.name
 	$NinePatchRect/CareerLabel.text = person.data.ocupation
-	var genderlabel = "Gender: "
-	genderlabel += "Male" if person.data.sex == "m" else "Female"
-	$NinePatchRect/GenderLabel.text = genderlabel
-	var familylabel = "Family: "
+	
+	var detaillabel = "Male, " if person.data.sex == "m" else "Female, "
+	detaillabel += str(person.data.age)
+	$NinePatchRect/DetailsLabel.text = detaillabel
+
+	var familylabel = ""
 	if person.data.children == 0:
 		familylabel += "No children, "
 	elif person.data.children == 1:
 		familylabel += "1 child, "
 	else:
-		familylabel += str(person.data.children) + "childs, "
+		familylabel += str(person.data.children) + " children, "
 	match person.data.spouse:
 		"m":
 			familylabel += "has husband"
@@ -22,12 +24,11 @@ func set_person_data(person: Person):
 		"n":
 			familylabel += "no spouse"
 	$NinePatchRect/FamilyLabel.text = familylabel
-	var agelabel = "Age: " +  str(person.data.age)
-	$NinePatchRect/AgeLabel.text = agelabel
-	var joblabel = "Last Job: "
-	joblabel += str(person.data.job_time) + " months, "
-	joblabel += str(person.data.job_salary) + "$"
-	$NinePatchRect/JobLabel.text = joblabel
-	var bmilabel = "BMI: "
-	bmilabel += person.data.weight
-	$NinePatchRect/WeightLabel.text = bmilabel
+	
+	var hourslabel = "Hours worked: "
+	hourslabel += str(person.data.hours)
+	$NinePatchRect/HoursLabel.text = hourslabel
+
+	var debtlabel = "DEBT: "
+	debtlabel += str(person.data.debt)
+	$NinePatchRect/DebtLabel.text = debtlabel
