@@ -3,7 +3,7 @@ class_name PersonDisplay
 
 func set_person_data(person: Person):
 	$NinePatchRect/NameLabel.text = person.data.name
-	$NinePatchRect/CareerLabel.text = person.data.education
+	$NinePatchRect/CareerLabel.text = person.data.ocupation
 	var genderlabel = "Gender: "
 	genderlabel += "Male" if person.data.sex == "m" else "Female"
 	$NinePatchRect/GenderLabel.text = genderlabel

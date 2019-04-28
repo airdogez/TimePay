@@ -11,10 +11,10 @@ export (String, FILE, "*.json") var people_file_path : String
 onready var entry_loc : Position2D = $EntryLoc
 onready var timer : Timer = $Timer
 onready var person = preload("res://people/Person.tscn")
+onready var bubble  = preload("res://interface/DialogBubble.tscn")
 
 onready var person_ui : PersonDisplay = $UI/PersonUI
 onready var control_ui : ControlDisplay = $UI/ControlsUI
-
 
 var people_data
 
@@ -26,16 +26,21 @@ func load_people():
 	assert file.file_exists(people_file_path)
 	file.open(people_file_path, file.READ)
 	var data = parse_json(file.get_as_text())
-	assert data.size() > 0	
+	assert data.size() > 0
 	people_data = data.values()
 
 func allow_entry_next_person() -> Person:
+	var b : DialogBubble = bubble.instance()
+	$BubbleLoc.add_child(b)
 	var p : Person = people_queue.pop_front()
+	assert p != null
 	p.connect("finished_entering", self, "entered")
 	p.move_to(entry_loc.global_position)
 	return p
 
 func entered(person: Person):
+	for b in $BubbleLoc.get_children():
+		b.queue_free()
 	current_person = person
 	print(person)
 	person_ui.set_person_data(person)

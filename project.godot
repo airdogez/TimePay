@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://interface/Controls.gd"
 }, {
+"base": "Node",
+"class": "DataLoader",
+"language": "GDScript",
+"path": "res://DataLoader.gd"
+}, {
+"base": "MarginContainer",
+"class": "DialogBubble",
+"language": "GDScript",
+"path": "res://interface/DialogBubble.gd"
+}, {
 "base": "NinePatchRect",
 "class": "DigitalScreen",
 "language": "GDScript",
@@ -31,6 +41,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "ControlDisplay": "",
+"DataLoader": "",
+"DialogBubble": "",
 "DigitalScreen": "",
 "Person": "",
 "PersonDisplay": ""

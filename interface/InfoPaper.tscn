@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://interface/InfoPaper.gd" type="Script" id=1]
+[ext_resource path="res://interface/Paper.png" type="Texture" id=2]
+[ext_resource path="res://interface/Font/ConsolasFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://interface/page_turn.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+font_path = "res://interface/Font/consola.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = SubResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 18, 18 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 18, 18 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 18, 18 )
+
+[node name="InfoPaper" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="TextureRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -54.0
+margin_top = 3.0
+margin_right = 54.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ANNOUNCEMENT
+"
+
+[node name="Control" type="Control" parent="TextureRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -59.0
+margin_top = 24.0
+margin_right = 59.0
+margin_bottom = 171.0
+
+[node name="Label" type="Label" parent="TextureRect/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Some text very long text anounncing some news that spans multiple rows but its not really using newlines. How do I do this sh*t. Hey I did it now this is the max lenght this text can have and not o."
+autowrap = true
+max_lines_visible = 10
+
+[node name="NextButton" type="Button" parent="TextureRect"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -18.0
+margin_top = -18.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 3 )
+
+[node name="PrevButton" type="Button" parent="TextureRect"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -18.0
+margin_right = 18.0
+rect_scale = Vector2( -1, 1 )
+rect_pivot_offset = Vector2( 9, 0 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 3 )
+
+[connection signal="pressed" from="TextureRect/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="TextureRect/PrevButton" to="." method="_on_PrevButton_pressed"]

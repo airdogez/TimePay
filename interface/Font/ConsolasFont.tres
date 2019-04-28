@@ -2,8 +2,10 @@
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
-font_path = "res://interface/Font/consola.ttf"
+hinting = 0
+font_path = "res://interface/Font/consolab.ttf"
 
 [resource]
+outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 1 )
 

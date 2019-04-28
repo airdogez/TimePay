@@ -3,44 +3,44 @@
         "name": "Average Joe",
         "sex": "m",
         "age": 20,
-        "education": "Engineer",
-        "job_time": 10,
-        "job_salary": 3000,
+        "ocupation": "Engineer",
+        "hours": 240,
         "children": 0,
         "spouse": "f",
+        "debt": 2300,
         "weight": "normal"
     },
     "2": {
         "name": "Sally",
         "sex": "f",
         "age": 24,
-        "education": "Artist",
-        "job_time": 4,
-        "job_salary": 1000,
+        "ocupation": "Artist",
+        "hours": 260,
         "children": 1,
         "spouse": "n",
-        "weight": "slim"
+        "debt": 1400,
+        "weight": "overweight"
     },
     "3": {
         "name": "Godot",
         "sex": "m",
         "age": 30,
-        "education": "Engineer",
-        "job_time": 2,
-        "job_salary": 5000,
+        "ocupation": "Engineer",
+        "hours": 200,
         "children": 2,
         "spouse": "m",
-        "weight": "overweight"
+        "debt": 1000,
+        "weight": "slim"
     },
     "4": {
         "name": "Godette",
         "sex": "f",
         "age": 26,
-        "education": "Historian",
-        "job_time": 5,
-        "job_salary": 2400,
+        "ocupation": "Historian",
+        "hours": 340,
         "children": 0,
         "spouse": "f",
-        "weight": "normal"
+        "debt": 3000,
+        "weight": "slim"
     },
 }

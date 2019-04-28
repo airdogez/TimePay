@@ -166,6 +166,10 @@ shader = SubResource( 11 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 27.0, 32.0, 39.0, 44.0, 51.0, 56.0 ],
+"_edit_vertical_guides_": [ 43.0 ]
+}
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_right = 222.0
@@ -178,19 +182,18 @@ patch_margin_bottom = 4
 
 [node name="NameLabel" type="Label" parent="NinePatchRect"]
 margin_left = 36.0
-margin_right = 93.0
+margin_right = 128.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.192157, 0.705882, 0.368627, 1 )
 text = "Unknown"
-align = 1
 valign = 1
 
 [node name="CareerLabel" type="Label" parent="NinePatchRect"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -94.0
-margin_right = -34.0
+margin_left = -95.0
+margin_right = -35.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.192157, 0.705882, 0.368627, 1 )
@@ -198,54 +201,59 @@ text = "ERROR"
 align = 2
 valign = 1
 
-[node name="GenderLabel" type="Label" parent="NinePatchRect"]
-margin_left = 47.0
+[node name="DetailsLabel" type="Label" parent="NinePatchRect"]
+margin_left = 42.0
 margin_top = 16.0
-margin_right = 121.0
+margin_right = 93.0
 margin_bottom = 30.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.192157, 0.705882, 0.368627, 1 )
-text = "Gender: NO DATA"
+text = "Female, 20"
 valign = 1
 
 [node name="FamilyLabel" type="Label" parent="NinePatchRect"]
-margin_left = 47.0
-margin_top = 33.0
-margin_right = 177.0
-margin_bottom = 47.0
+margin_left = 42.0
+margin_top = 28.0
+margin_right = 172.0
+margin_bottom = 42.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.192157, 0.705882, 0.368627, 1 )
 text = "Family: NO DATA"
 valign = 1
 
-[node name="AgeLabel" type="Label" parent="NinePatchRect"]
-margin_left = 48.0
-margin_top = 48.0
-margin_right = 178.0
-margin_bottom = 62.0
+[node name="DistrictLabel" type="Label" parent="NinePatchRect"]
+margin_left = 42.0
+margin_top = 52.0
+margin_right = 172.0
+margin_bottom = 66.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.192157, 0.705882, 0.368627, 1 )
-text = "Age: NO DATA"
+text = "District: Ballburg"
 valign = 1
 
-[node name="JobLabel" type="Label" parent="NinePatchRect"]
-margin_left = 47.0
-margin_top = 64.0
-margin_right = 203.0
-margin_bottom = 78.0
+[node name="HoursLabel" type="Label" parent="NinePatchRect"]
+margin_left = 42.0
+margin_top = 40.0
+margin_right = 198.0
+margin_bottom = 54.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.192157, 0.705882, 0.368627, 1 )
-text = "Last Job: NO DATA"
+text = "Hours Worked: 200"
 valign = 1
 
-[node name="WeightLabel" type="Label" parent="NinePatchRect"]
-margin_left = 47.0
-margin_top = 80.0
-margin_right = 203.0
-margin_bottom = 94.0
+[node name="DebtLabel" type="Label" parent="NinePatchRect"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -17.0
+margin_right = -4.0
+margin_bottom = -3.0
 custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 0.192157, 0.705882, 0.368627, 1 )
-text = "BMI: NO DATA"
+custom_colors/font_color = Color( 0.827451, 0.101961, 0.188235, 1 )
+text = "DEBT: 1000$"
+align = 2
 valign = 1
 
 [node name="BorderRight" type="TextureRect" parent="NinePatchRect"]
