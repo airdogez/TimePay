@@ -27,6 +27,7 @@ func set_data(_data):
 	var texture = load(SPRITE_PATH + sprite_file + ".png")
 	$Sprite.texture = texture
 	print(data.name)
+	print(data["ocupation"])
 
 func _ready():
 	$AnimationPlayer.play("walk")

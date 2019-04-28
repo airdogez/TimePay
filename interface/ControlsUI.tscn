@@ -11,49 +11,49 @@
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.517647, 0.494118, 0.529412, 1 )
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 16, 16 )
 expand_margin_left = 2.0
 expand_margin_right = 2.0
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 4 )
 region_rect = Rect2( 36, 0, 18, 18 )
 margin_left = 2.0
 margin_right = 2.0
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=5]
 content_margin_left = 13.0
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 18, 18 )
 margin_left = 2.0
 margin_right = 2.0
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 8, 8, 8 )
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 16, 8, 8 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 7 )
 region_rect = Rect2( 8, 8, 8, 8 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 7 )
 region_rect = Rect2( 8, 16, 8, 8 )
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 7 )
 region_rect = Rect2( 8, 0, 8, 8 )
 
@@ -70,7 +70,7 @@ custom_styles/panel = SubResource( 1 )
 [node name="TitlePanel" type="Panel" parent="Panel"]
 margin_right = 96.0
 margin_bottom = 16.0
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 2 )
 
 [node name="Label" type="Label" parent="Panel/TitlePanel"]
 margin_left = 1.0
@@ -84,6 +84,8 @@ text = "Budget:"
 margin_top = 16.0
 margin_right = 96.0
 margin_bottom = 34.0
+ammount_to_give = 1000000
+disabled = true
 
 [node name="InfoButton" type="Button" parent="Panel"]
 margin_left = 77.0
@@ -91,9 +93,9 @@ margin_top = 77.0
 margin_right = 95.0
 margin_bottom = 95.0
 rect_clip_content = true
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="Panel/InfoButton"]
 margin_left = 1.0
@@ -108,9 +110,9 @@ margin_top = 77.0
 margin_right = 75.0
 margin_bottom = 95.0
 rect_clip_content = true
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="Panel/HisotryButton"]
 margin_left = 1.0
@@ -127,6 +129,7 @@ margin_bottom = 78.0
 
 [node name="AmountScreen" parent="Panel/Control" instance=ExtResource( 3 )]
 margin_right = 68.0
+ammount_to_give = 1000
 
 [node name="UpButton" type="Button" parent="Panel/Control"]
 margin_left = 71.0
@@ -134,9 +137,9 @@ margin_top = -2.0
 margin_right = 87.0
 margin_bottom = 14.0
 rect_scale = Vector2( 0.5, 0.5 )
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
 
 [node name="DownButton" type="Button" parent="Panel/Control"]
 margin_left = 71.0
@@ -144,86 +147,86 @@ margin_top = 11.0
 margin_right = 87.0
 margin_bottom = 27.0
 rect_scale = Vector2( 0.5, 0.5 )
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
-
-[node name="GiveButton" type="Button" parent="Panel/Control"]
-margin_left = -5.0
-margin_top = 20.0
-margin_right = 29.0
-margin_bottom = 38.0
-rect_clip_content = true
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
-
-[node name="GiveLabel" type="Label" parent="Panel/Control/GiveButton"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -15.0
-margin_top = -9.0
-margin_right = 15.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 2 )
-text = "Give
-"
-align = 1
-valign = 1
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
 
 [node name="PayButton" type="Button" parent="Panel/Control"]
-margin_left = -11.0
-margin_top = 39.0
-margin_right = 17.0
-margin_bottom = 57.0
+margin_left = -2.0
+margin_top = 20.0
+margin_right = 28.0
+margin_bottom = 38.0
 rect_clip_content = true
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 
 [node name="GiveLabel" type="Label" parent="Panel/Control/PayButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -13.0
+margin_left = -15.0
 margin_top = -8.0
-margin_right = 13.0
+margin_right = 15.0
 margin_bottom = 8.0
 custom_fonts/font = ExtResource( 2 )
 text = "Pay"
 align = 1
 valign = 1
 
-[node name="DenyButton" type="Button" parent="Panel/Control"]
-margin_left = 34.0
+[node name="NextButton" type="Button" parent="Panel/Control"]
+margin_left = -11.0
+margin_top = 39.0
+margin_right = 24.0
+margin_bottom = 57.0
+rect_clip_content = true
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="NextLabel" type="Label" parent="Panel/Control/NextButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -15.5
+margin_top = -8.0
+margin_right = 15.5
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 2 )
+text = "Next"
+align = 1
+valign = 1
+
+[node name="DebtButton" type="Button" parent="Panel/Control"]
+margin_left = 35.0
 margin_top = 20.0
-margin_right = 74.0
+margin_right = 71.0
 margin_bottom = 38.0
 rect_clip_content = true
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 
-[node name="DenyLabel" type="Label" parent="Panel/Control/DenyButton"]
+[node name="DenyLabel" type="Label" parent="Panel/Control/DebtButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -18.0
-margin_top = -9.0
+margin_top = -8.0
 margin_right = 17.0
-margin_bottom = 26.0
+margin_bottom = 8.0
 custom_fonts/font = ExtResource( 2 )
-text = "Deny
-"
+text = "Debt"
 align = 1
 valign = 1
 
+[connection signal="pressed" from="Panel/HisotryButton" to="." method="_on_HisotryButton_pressed"]
+[connection signal="amount_changed" from="Panel/Control/AmountScreen" to="." method="_on_AmountScreen_amount_changed"]
 [connection signal="pressed" from="Panel/Control/UpButton" to="." method="_on_UpButton_pressed"]
 [connection signal="pressed" from="Panel/Control/DownButton" to="." method="_on_DownButton_pressed"]
-[connection signal="pressed" from="Panel/Control/GiveButton" to="." method="_on_GiveButton_pressed"]
 [connection signal="pressed" from="Panel/Control/PayButton" to="." method="_on_PayButton_pressed"]
-[connection signal="pressed" from="Panel/Control/DenyButton" to="." method="_on_DenyButton_pressed"]
+[connection signal="pressed" from="Panel/Control/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="Panel/Control/DebtButton" to="." method="_on_DebtButton_pressed"]

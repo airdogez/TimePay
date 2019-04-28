@@ -3,7 +3,7 @@
 [ext_resource path="res://people/Person.gd" type="Script" id=1]
 [ext_resource path="res://people/man_normal.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "idle"
 length = 0.001
 tracks/0/type = "value"
@@ -19,8 +19,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "walk"
+[sub_resource type="Animation" id=2]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -36,7 +35,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 2.52558, 7 )
 
 [node name="Person" type="KinematicBody2D"]
@@ -48,13 +47,13 @@ texture = ExtResource( 2 )
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 3 )
-anims/walk = SubResource( 1 )
+anims/idle = SubResource( 1 )
+anims/walk = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.509054, -0.0565605 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

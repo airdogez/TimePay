@@ -29,6 +29,11 @@ func set_person_data(person: Person):
 	hourslabel += str(person.data.hours)
 	$NinePatchRect/HoursLabel.text = hourslabel
 
+	var scorelabel = "Score: "
+	scorelabel += str(person.data.metascore)
+	$NinePatchRect/ScoreLabel.text = scorelabel
+
 	var debtlabel = "DEBT: "
-	debtlabel += str(person.data.debt)
+	debtlabel += str(person.data.debt) + "$"
+	
 	$NinePatchRect/DebtLabel.text = debtlabel
