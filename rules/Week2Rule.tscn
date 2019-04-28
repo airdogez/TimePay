@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://rules/Rule.gd" type="Script" id=1]
+
+[node name="Rule" type="Node"]
+script = ExtResource( 1 )
+written_rules = "+ Women are paid 80% of the published hourly rate\\n
++ Every hour over 180 is considered overtime\\n
++ Overtime is paid 115% the base hourly rate\\n
++ Only people with scores over 70 will be paid overtime\\n"
+

@@ -1,14 +1,20 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://interface/ControlsUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://interface/PersonUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Outside.png" type="Texture" id=4]
-[ext_resource path="res://car/Car.tscn" type="PackedScene" id=5]
-[ext_resource path="res://people/PersonGenerator.gd" type="Script" id=6]
-[ext_resource path="res://DataLoader.gd" type="Script" id=7]
-[ext_resource path="res://interface/InfoPaper.tscn" type="PackedScene" id=8]
-[ext_resource path="res://interface/WeekUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://rules/Week1Rule.tscn" type="PackedScene" id=2]
+[ext_resource path="res://rules/Week2Rule.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/ControlsUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interface/PersonUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://interface/WeekUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Outside.png" type="Texture" id=7]
+[ext_resource path="res://car/Car.tscn" type="PackedScene" id=8]
+[ext_resource path="res://people/PersonGenerator.gd" type="Script" id=9]
+[ext_resource path="res://DataLoader.gd" type="Script" id=10]
+[ext_resource path="res://interface/InfoPaper.tscn" type="PackedScene" id=11]
+[ext_resource path="res://MonthEndUI.gd" type="Script" id=12]
+[ext_resource path="res://interface/Font/ConsolasFont.tres" type="DynamicFont" id=13]
+[ext_resource path="res://interface/Font/VerdanaFont.tres" type="DynamicFont" id=14]
+[ext_resource path="res://interface/Button_Style.tres" type="StyleBox" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -16,17 +22,78 @@ bg_color = Color( 0, 0, 0, 1 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 14 )
 
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "fadein"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "fadeout"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 people_file_path = "res://people/people.json"
+week1_rule_scene = ExtResource( 2 )
+week2_rule_scene = ExtResource( 3 )
 
 [node name="UI" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="ControlsUI" parent="UI" instance=ExtResource( 2 )]
+[node name="ControlsUI" parent="UI" instance=ExtResource( 4 )]
 
-[node name="PersonUI" parent="UI" instance=ExtResource( 3 )]
+[node name="PersonUI" parent="UI" instance=ExtResource( 5 )]
 margin_left = 98.0
 margin_right = 98.0
 
@@ -42,9 +109,15 @@ margin_right = 320.0
 margin_bottom = 99.0
 custom_styles/panel = SubResource( 1 )
 
+[node name="Control" parent="UI" instance=ExtResource( 6 )]
+margin_left = 86.0
+margin_top = 59.0
+margin_right = 86.0
+margin_bottom = 59.0
+
 [node name="BG" type="Sprite" parent="."]
 position = Vector2( 160, 150 )
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 
 [node name="BubbleLoc" type="Position2D" parent="."]
 position = Vector2( 171, 138 )
@@ -52,7 +125,7 @@ position = Vector2( 171, 138 )
 [node name="EntryLoc" type="Position2D" parent="."]
 position = Vector2( 165, 155 )
 
-[node name="Car" parent="." instance=ExtResource( 5 )]
+[node name="Car" parent="." instance=ExtResource( 8 )]
 position = Vector2( -16, 190 )
 
 [node name="People" type="Node2D" parent="."]
@@ -72,38 +145,114 @@ autostart = true
 
 [node name="PersonGenerator" type="Node" parent="."]
 editor/display_folded = true
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 
 [node name="JobLoader" type="Node" parent="PersonGenerator"]
-script = ExtResource( 7 )
+script = ExtResource( 10 )
 data_file_path = "res://people/data/jobs.json"
 
 [node name="NameLoader" type="Node" parent="PersonGenerator"]
-script = ExtResource( 7 )
+script = ExtResource( 10 )
 data_file_path = "res://people/data/names.json"
 
 [node name="LastNameLoader" type="Node" parent="PersonGenerator"]
-script = ExtResource( 7 )
+script = ExtResource( 10 )
 data_file_path = "res://people/data/lastnames.json"
 
-[node name="InfoPaper" parent="." instance=ExtResource( 8 )]
+[node name="InfoPaper" parent="." instance=ExtResource( 11 )]
 visible = false
 margin_left = 95.0
 margin_top = 14.0
 margin_right = 95.0
 margin_bottom = 14.0
 
-[node name="WeekPivot" type="Control" parent="."]
+[node name="MonthEndUI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 12 )
+
+[node name="Fade" type="Panel" parent="MonthEndUI"]
+modulate = Color( 0, 0, 0, 1 )
 margin_right = 320.0
 margin_bottom = 201.0
+custom_styles/panel = SubResource( 4 )
 
-[node name="Control" parent="WeekPivot" instance=ExtResource( 9 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
+[node name="AttendedLabel" type="Label" parent="MonthEndUI"]
+margin_left = 200.0
+margin_top = 18.0
+margin_right = 240.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 13 )
+text = "10"
+align = 2
+
+[node name="IncorrectLabel" type="Label" parent="MonthEndUI"]
+margin_left = 200.0
+margin_top = 36.0
+margin_right = 240.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 13 )
+text = "-10"
+align = 2
+
+[node name="PaymentLabel" type="Label" parent="MonthEndUI"]
+margin_left = 200.0
+margin_top = 55.0
+margin_right = 240.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 13 )
+text = "100"
+align = 2
+
+[node name="Label" type="Label" parent="MonthEndUI"]
+margin_left = 16.0
+margin_top = 18.0
+margin_right = 56.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 14 )
+text = "People attended:
+Incorrect payments:
+Final payment:"
+
+[node name="NextMonthButton" type="Button" parent="MonthEndUI"]
+margin_left = 214.0
+margin_top = 170.0
+margin_right = 303.0
+margin_bottom = 190.0
+custom_styles/hover = ExtResource( 15 )
+custom_styles/pressed = ExtResource( 15 )
+custom_styles/normal = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="MonthEndUI/NextMonthButton"]
+margin_left = 5.0
+margin_right = 84.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 14 )
+text = "Next month"
+
+[node name="EndButton" type="Button" parent="MonthEndUI"]
+margin_left = 12.0
+margin_top = 170.0
+margin_right = 47.0
+margin_bottom = 190.0
+custom_styles/hover = ExtResource( 15 )
+custom_styles/pressed = ExtResource( 15 )
+custom_styles/normal = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="MonthEndUI/EndButton"]
+margin_left = 5.0
+margin_right = 84.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 14 )
+text = "End"
+
+[node name="MonthEndAnimation" type="AnimationPlayer" parent="MonthEndUI"]
+anims/fadein = SubResource( 3 )
+anims/fadeout = SubResource( 5 )
 
 [connection signal="history" from="UI/ControlsUI" to="InfoPaper" method="_on_ControlsUI_history"]
 [connection signal="next" from="UI/ControlsUI" to="." method="_on_ControlsUI_next"]
 [connection signal="pay" from="UI/ControlsUI" to="." method="_on_ControlsUI_pay"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="MonthEndUI/NextMonthButton" to="." method="_on_NextMonthButton_pressed"]
+[connection signal="pressed" from="MonthEndUI/EndButton" to="MonthEndUI" method="_on_EndButton_pressed"]

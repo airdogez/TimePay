@@ -10,12 +10,16 @@ const MAX_LINES = 16
 
 var current_page_idx = 0
 
+func change_rule(new_rule):
+	rules = new_rule
+	initialize()
+
 func initialize():
 	var pg_idx = 0
 	var current_page = pages[pg_idx]
 	var page_line = 1
 	for job in rules.wages.keys():
-		current_page.text += job + ": " + str(job.wages[job]) + ".\n"
+		current_page.text += job + ": " + str(rules.wages[job]) + ".\n"
 		page_line +=1
 		if page_line > MAX_LINES:
 			pg_idx += 1
@@ -27,8 +31,6 @@ func initialize():
 	current_page.text = "This months rules: \n"
 	for rule in rules.get_rules():
 		current_page.text += rule.substr(0, rule.length()-2) + "\n"
-
-	
 
 func _ready():
 	pages = $TextureRect/Pages.get_children()
