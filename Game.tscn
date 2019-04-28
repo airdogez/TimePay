@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://interface/ControlsUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://interface/PersonUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Outside.png" type="Texture" id=4]
+[ext_resource path="res://car/Car.tscn" type="PackedScene" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 14 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 1 )
+people_file_path = "res://people/people.json"
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ControlsUI" parent="UI" instance=ExtResource( 2 )]
+
+[node name="PersonUI" parent="UI" instance=ExtResource( 3 )]
+margin_left = 98.0
+margin_right = 98.0
+
+[node name="Panel" type="Panel" parent="UI"]
+margin_left = 96.0
+margin_right = 98.0
+margin_bottom = 96.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Panel2" type="Panel" parent="UI"]
+margin_top = 96.0
+margin_right = 320.0
+margin_bottom = 99.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 160, 150 )
+texture = ExtResource( 4 )
+
+[node name="EntryLoc" type="Position2D" parent="."]
+position = Vector2( 165, 155 )
+
+[node name="People" type="Node" parent="."]
+
+[node name="Car" parent="." instance=ExtResource( 5 )]
+position = Vector2( -16, 190 )
+
+[node name="InvisWall" type="KinematicBody2D" parent="."]
+position = Vector2( 180, 159 )
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisWall"]
+position = Vector2( -1, 2 )
+shape = SubResource( 2 )
+one_way_collision_margin = 16.8
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
