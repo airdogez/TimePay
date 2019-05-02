@@ -1,6 +1,6 @@
 extends MovableControl
 
-signal send
+signal send(value)
 
 var total := 0
 
@@ -74,12 +74,15 @@ func _on_Equal_pressed():
 func update_number(val: int):
 	if a.size() < MAX_DIGITS:
 		a.push_front(val)
-	update_display(stack_to_number(a))
+	total = stack_to_number(a)
+	update_display(total)
+	
 
 func _on_Clear_pressed():
 	operation = ""
 	a.clear()
 	b.clear()
+	total = 0
 	update_display(0)
 
 func number_to_stack(number: int) -> Array:

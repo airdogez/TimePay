@@ -2,7 +2,7 @@ extends Control
 class_name ControlDisplay
 
 var budget = 200000
-var amount = 1000
+var amount = 1000 setget set_amount
 
 onready var increase_button : Button = $Panel/Control/UpButton
 onready var decrease_button : Button = $Panel/Control/DownButton
@@ -19,7 +19,12 @@ signal next(total_given)
 signal increase
 signal decrease
 
+signal calculator
 signal history
+
+func set_amount(_amount):
+	amount = _amount
+	amount_screen.set_money(amount)
 
 func set_person(person):
 	current_person = person
@@ -71,3 +76,8 @@ func _on_NextButton_pressed():
 
 func _on_AmountScreen_amount_changed(_amount):
 	amount = _amount
+
+
+func _on_InfoButton_pressed():
+	emit_signal("calculator")
+	

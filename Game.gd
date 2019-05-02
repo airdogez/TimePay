@@ -26,7 +26,7 @@ var incorrect_payment = 0
 var month = 1
 
 func start_game(monthrules, month_n):
-	$InfoPaper.change_rule(monthrules)
+	$FloatingWindows/InfoPaper.change_rule(monthrules)
 	$MonthEndUI/MonthEndAnimation.play("fadeout")
 	$UI/Control.set_month(month)
 	$UI/Control/AnimationPlayer.play("enter")
@@ -35,6 +35,9 @@ func start_game(monthrules, month_n):
 
 func _ready():
 	start_game(week1_rule_scene.instance(), month)
+	for child in $FloatingWindows.get_children():
+		if child is MovableControl:
+			child.connect("move_to_top", self, "move_floating_window_to_top")
 
 func allow_entry_next_person() -> Person:
 	var b : DialogBubble = bubble.instance()
@@ -109,5 +112,14 @@ func _on_NextMonthButton_pressed():
 	start_game(week2_rule_scene.instance(), month)
 
 
-func _on_InfoPaper_move_to_top(node):
-	move_child(node, get_child_count()-1)
+func move_floating_window_to_top(node):
+	print(node)
+	$FloatingWindows.move_child(node, $FloatingWindows.get_child_count()-1)
+
+
+func _on_ControlsUI_calculator():
+	$FloatingWindows/CalculatorUI.visible = !$FloatingWindows/CalculatorUI.visible
+
+
+func _on_CalculatorUI_send(value):
+	$UI/ControlsUI.amount = value

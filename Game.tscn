@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://rules/Week1Rule.tscn" type="PackedScene" id=2]
@@ -10,11 +10,12 @@
 [ext_resource path="res://car/Car.tscn" type="PackedScene" id=8]
 [ext_resource path="res://people/PersonGenerator.gd" type="Script" id=9]
 [ext_resource path="res://DataLoader.gd" type="Script" id=10]
-[ext_resource path="res://interface/InfoPaper.tscn" type="PackedScene" id=11]
-[ext_resource path="res://MonthEndUI.gd" type="Script" id=12]
-[ext_resource path="res://interface/Font/ConsolasFont.tres" type="DynamicFont" id=13]
-[ext_resource path="res://interface/Font/VerdanaFont.tres" type="DynamicFont" id=14]
-[ext_resource path="res://interface/Button_Style.tres" type="StyleBox" id=15]
+[ext_resource path="res://MonthEndUI.gd" type="Script" id=11]
+[ext_resource path="res://interface/Font/ConsolasFont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://interface/Font/VerdanaFont.tres" type="DynamicFont" id=13]
+[ext_resource path="res://interface/Button_Style.tres" type="StyleBox" id=14]
+[ext_resource path="res://interface/CalculatorUI.tscn" type="PackedScene" id=15]
+[ext_resource path="res://interface/InfoPaper.tscn" type="PackedScene" id=16]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -158,19 +159,12 @@ data_file_path = "res://people/data/names.json"
 script = ExtResource( 10 )
 data_file_path = "res://people/data/lastnames.json"
 
-[node name="InfoPaper" parent="." instance=ExtResource( 11 )]
-visible = false
-margin_left = 95.0
-margin_top = 14.0
-margin_right = 95.0
-margin_bottom = 14.0
-
 [node name="MonthEndUI" type="Control" parent="."]
 editor/display_folded = true
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 12 )
+script = ExtResource( 11 )
 
 [node name="Fade" type="Panel" parent="MonthEndUI"]
 modulate = Color( 0, 0, 0, 1 )
@@ -183,7 +177,7 @@ margin_left = 200.0
 margin_top = 18.0
 margin_right = 240.0
 margin_bottom = 35.0
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 12 )
 text = "10"
 align = 2
 
@@ -192,7 +186,7 @@ margin_left = 200.0
 margin_top = 36.0
 margin_right = 240.0
 margin_bottom = 53.0
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 12 )
 text = "-10"
 align = 2
 
@@ -201,7 +195,7 @@ margin_left = 200.0
 margin_top = 55.0
 margin_right = 240.0
 margin_bottom = 72.0
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 12 )
 text = "100"
 align = 2
 
@@ -210,7 +204,7 @@ margin_left = 16.0
 margin_top = 18.0
 margin_right = 56.0
 margin_bottom = 32.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 13 )
 text = "People attended:
 Incorrect payments:
 Final payment:"
@@ -220,15 +214,15 @@ margin_left = 214.0
 margin_top = 170.0
 margin_right = 303.0
 margin_bottom = 190.0
-custom_styles/hover = ExtResource( 15 )
-custom_styles/pressed = ExtResource( 15 )
-custom_styles/normal = ExtResource( 15 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/normal = ExtResource( 14 )
 
 [node name="Label" type="Label" parent="MonthEndUI/NextMonthButton"]
 margin_left = 5.0
 margin_right = 84.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 13 )
 text = "Next month"
 
 [node name="EndButton" type="Button" parent="MonthEndUI"]
@@ -236,24 +230,43 @@ margin_left = 12.0
 margin_top = 170.0
 margin_right = 47.0
 margin_bottom = 190.0
-custom_styles/hover = ExtResource( 15 )
-custom_styles/pressed = ExtResource( 15 )
-custom_styles/normal = ExtResource( 15 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/normal = ExtResource( 14 )
 
 [node name="Label" type="Label" parent="MonthEndUI/EndButton"]
 margin_left = 5.0
 margin_right = 84.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 13 )
 text = "End"
 
 [node name="MonthEndAnimation" type="AnimationPlayer" parent="MonthEndUI"]
 anims/fadein = SubResource( 4 )
 anims/fadeout = SubResource( 5 )
-[connection signal="history" from="UI/ControlsUI" to="InfoPaper" method="_on_ControlsUI_history"]
+
+[node name="FloatingWindows" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="CalculatorUI" parent="FloatingWindows" instance=ExtResource( 15 )]
+visible = false
+margin_left = 95.0
+margin_top = 14.0
+margin_right = 191.0
+margin_bottom = 162.0
+
+[node name="InfoPaper" parent="FloatingWindows" instance=ExtResource( 16 )]
+visible = false
+margin_left = 95.0
+margin_top = 14.0
+margin_right = 95.0
+margin_bottom = 14.0
+[connection signal="calculator" from="UI/ControlsUI" to="." method="_on_ControlsUI_calculator"]
+[connection signal="history" from="UI/ControlsUI" to="FloatingWindows/InfoPaper" method="_on_ControlsUI_history"]
 [connection signal="next" from="UI/ControlsUI" to="." method="_on_ControlsUI_next"]
 [connection signal="pay" from="UI/ControlsUI" to="." method="_on_ControlsUI_pay"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="move_to_top" from="InfoPaper" to="." method="_on_InfoPaper_move_to_top"]
 [connection signal="pressed" from="MonthEndUI/NextMonthButton" to="." method="_on_NextMonthButton_pressed"]
 [connection signal="pressed" from="MonthEndUI/EndButton" to="MonthEndUI" method="_on_EndButton_pressed"]
+[connection signal="send" from="FloatingWindows/CalculatorUI" to="." method="_on_CalculatorUI_send"]
