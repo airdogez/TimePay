@@ -1,6 +1,7 @@
-extends Control
+extends MovableControl
 
 var pages : = []
+
 
 onready var job_data := $"../PersonGenerator"
 onready var page1 = $TextureRect/Pages/Page1

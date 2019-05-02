@@ -138,6 +138,5 @@ custom_styles/pressed = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 
 [node name="Rule" parent="." instance=ExtResource( 5 )]
-
 [connection signal="pressed" from="TextureRect/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="pressed" from="TextureRect/PrevButton" to="." method="_on_PrevButton_pressed"]

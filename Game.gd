@@ -107,3 +107,7 @@ func _on_ControlsUI_pay(amount):
 func _on_NextMonthButton_pressed():
 	month+=1
 	start_game(week2_rule_scene.instance(), month)
+
+
+func _on_InfoPaper_move_to_top(node):
+	move_child(node, get_child_count()-1)

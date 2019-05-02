@@ -7,4 +7,3 @@ font_path = "res://interface/Font/verdanab.ttf"
 [resource]
 size = 12
 font_data = SubResource( 1 )
-

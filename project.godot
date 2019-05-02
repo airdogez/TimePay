@@ -27,7 +27,12 @@ _global_script_classes=[ {
 "base": "NinePatchRect",
 "class": "DigitalScreen",
 "language": "GDScript",
-"path": "res://interface/MoneyToGiveBox.gd"
+"path": "res://interface/NumberDisplay.gd"
+}, {
+"base": "Control",
+"class": "MovableControl",
+"language": "GDScript",
+"path": "res://interface/MovableControl.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Person",
@@ -49,6 +54,7 @@ _global_script_class_icons={
 "DataLoader": "",
 "DialogBubble": "",
 "DigitalScreen": "",
+"MovableControl": "",
 "Person": "",
 "PersonDisplay": "",
 "Rule": ""

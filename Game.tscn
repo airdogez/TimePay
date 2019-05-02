@@ -22,11 +22,10 @@ bg_color = Color( 0, 0, 0, 1 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 14 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "fadein"
+[sub_resource type="Animation" id=4]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -167,6 +166,8 @@ margin_right = 95.0
 margin_bottom = 14.0
 
 [node name="MonthEndUI" type="Control" parent="."]
+editor/display_folded = true
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 12 )
@@ -175,7 +176,7 @@ script = ExtResource( 12 )
 modulate = Color( 0, 0, 0, 1 )
 margin_right = 320.0
 margin_bottom = 201.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="AttendedLabel" type="Label" parent="MonthEndUI"]
 margin_left = 200.0
@@ -247,12 +248,12 @@ custom_fonts/font = ExtResource( 14 )
 text = "End"
 
 [node name="MonthEndAnimation" type="AnimationPlayer" parent="MonthEndUI"]
-anims/fadein = SubResource( 3 )
+anims/fadein = SubResource( 4 )
 anims/fadeout = SubResource( 5 )
-
 [connection signal="history" from="UI/ControlsUI" to="InfoPaper" method="_on_ControlsUI_history"]
 [connection signal="next" from="UI/ControlsUI" to="." method="_on_ControlsUI_next"]
 [connection signal="pay" from="UI/ControlsUI" to="." method="_on_ControlsUI_pay"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="move_to_top" from="InfoPaper" to="." method="_on_InfoPaper_move_to_top"]
 [connection signal="pressed" from="MonthEndUI/NextMonthButton" to="." method="_on_NextMonthButton_pressed"]
 [connection signal="pressed" from="MonthEndUI/EndButton" to="MonthEndUI" method="_on_EndButton_pressed"]
